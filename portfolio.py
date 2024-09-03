@@ -116,5 +116,5 @@ elif options == "📁 My Projects":
 
     st.subheader("Project in IT332 - Currently Working on it...")
     st.write("""
-          pls give us idea huhu
+          pls give us idea huhuhu
           """)

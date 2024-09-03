@@ -15,27 +15,23 @@ options = st.sidebar.radio("Go to", ["👤 About Me", "📁 My Projects"])
 
 
 if options == "👤 About Me":
-
-    with st.spinner(text="In progress"):
-        time.sleep(1.5)
-
-
-
     st.header("Hello!")
 
-    col1, col2 = st.columns(2)
-    col1.write("Name: **Rey Anthony Montalvo Novero**")
-    col1.write("Course and Year: **BS Information Technology - 4th**")
-    col1.write("Hometown: **454 CPG North Avenue, Tagbilaran City, Bohol**")
-
-    m = folium.Map(location=[9.655750, 123.855698], zoom_start=15)
-    folium.Marker([9.655750, 123.855698], popup="My Hometown").add_to(m)
+    col1, col2 = st.columns([2, 1])
 
     with col1:
-        st_folium(m, width=350, height=200)
+        st.write("Name: **Rey Anthony Montalvo Novero**")
+        st.write("Course and Year: **BS Information Technology - 4th Year**")
+        st.write("Hometown: **454 CPG North Avenue, Tagbilaran City, Bohol**")
 
-    col2.image('img/picture.jpg')
-    st.write('---')
+        m = folium.Map(location=[9.655750, 123.855698], zoom_start=15)
+        folium.Marker([9.655750, 123.855698], popup="My Hometown").add_to(m)
+        st_folium(m, width=450, height=200)
+
+        st.write("")
+        st.write('------')
+
+    col2.image('img/picture.jpg', use_column_width=True)
 
     st.subheader("Educational Background")
     st.write("""

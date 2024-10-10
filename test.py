@@ -113,6 +113,42 @@ def main():
         missing_data = df.isna().sum()
         st.dataframe(missing_data[missing_data > 0])
 
+        # Function to detect and display outliers
+    def detect_outliers(df, column):
+        upper_limit = df[column].mean() + 3 * df[column].std()
+        lower_limit = df[column].mean() - 3 * df[column].std()
+        outliers = df[(df[column] > upper_limit) | (df[column] < lower_limit)]
+        return outliers
+
+    st.subheader("Outliers Detection")
+    st.write("The following rows are considered outliers for each variable:")
+
+    columns_to_check = ["Score", "GDP per capita", "Social support", 
+                        "Healthy life expectancy", "Freedom to make life choices", 
+                        "Generosity", "Perceptions of corruption"]
+
+    for col in columns_to_check:
+        outliers = detect_outliers(df, col)
+        if not outliers.empty:
+            st.write(f"Outliers in '{col}':")
+            st.dataframe(outliers)
+        else:
+            st.write(f"No outliers detected in '{col}'.")
+
+    def remove_outliers(df, column):
+        upper_limit = df[column].mean() + 3 * df[column].std()
+        lower_limit = df[column].mean() - 3 * df[column].std()
+        return df[(df[column] >= lower_limit) & (df[column] <= upper_limit)]
+
+        df_clean = df.copy()
+        for col in columns_to_check:
+        df_clean = remove_outliers(df_clean, col)
+
+        st.subheader("Before and After Removing Outliers")
+        st.write(f"Number of rows before removing outliers: {df.shape[0]}")
+        st.write(f"Number of rows after removing outliers: {df_clean.shape[0]}")
+        st.write(f"**We didn't apply the cleaned dataset onwards so all countries will be included.**")
+
         st.subheader("Summary Statistics")
         st.dataframe(df.drop(columns=["Overall rank"]).describe())
 

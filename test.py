@@ -53,8 +53,8 @@ st.markdown("""
 def load_data():
     try:
         # Load the actual data from the CSV file
-        data = pd.read_csv('/Users/ross/Downloads/2018.csv')
-        # data = pd.read_csv('2018.csv')
+        # data = pd.read_csv('/Users/ross/Downloads/2018.csv')
+        data = pd.read_csv('2018.csv')
         return data
     except Exception as e:
         st.error(f"Failed to load data: {e}")
@@ -180,6 +180,8 @@ def main():
 
             fig.update_layout(height=800, title_text="Comparison of Happiness Factors Across Selected Countries", title_x=0.5)
             st.plotly_chart(fig, use_container_width=True)
+
+    # rey was here
 
     elif page == "Conclusion":
         st.title("Conclusion")

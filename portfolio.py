@@ -28,10 +28,11 @@ if options == "👤 About Me":
         folium.Marker([9.655750, 123.855698], popup="My Hometown").add_to(m)
         st_folium(m, width=450, height=200)
 
-        st.write("")
-        st.write('------')
 
     col2.image('img/picture.jpg', use_column_width=True)
+    st.write("")
+
+    st.empty()
 
     st.subheader("Educational Background")
     st.write("""

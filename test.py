@@ -52,9 +52,7 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        # Load the actual data from the CSV file
-        # data = pd.read_csv('/Users/ross/Downloads/2018.csv')
-        data = pd.read_csv('2018.csv')
+        data = pd.read_csv("https://github.com/reeyyyxd/introduction/raw/refs/heads/main/2018.csv")
         return data
     except Exception as e:
         st.error(f"Failed to load data: {e}")

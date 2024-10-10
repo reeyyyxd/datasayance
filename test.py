@@ -142,7 +142,7 @@ def main():
 
         df_clean = df.copy()
         for col in columns_to_check:
-        df_clean = remove_outliers(df_clean, col)
+            df_clean = remove_outliers(df_clean, col)
 
         st.subheader("Before and After Removing Outliers")
         st.write(f"Number of rows before removing outliers: {df.shape[0]}")
